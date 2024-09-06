@@ -17,7 +17,7 @@ namespace Examinationsuppgift1
             }
             else
             {
-                Contact contact = new Contact(txtFirstName.Text.Trim(), txtLastName.Text.Trim(), txtAddress.Text.Trim(), txtPostalCode.Text.Trim().Replace(" ",""), txtCity.Text.Trim(), txtPhoneNumber.Text.Trim(), txtEmail.Text.Trim());
+                Contact contact = new Contact(txtFirstName.Text.Trim(), txtLastName.Text.Trim(), txtAddress.Text.Trim(), txtPostalCode.Text.Trim().Replace(" ", ""), txtCity.Text.Trim(), txtPhoneNumber.Text.Trim(), txtEmail.Text.Trim());
                 Utilities.SaveContact(contact);
                 MessageBox.Show("Contact saved to database");
                 txtFirstName.Clear();
@@ -31,12 +31,14 @@ namespace Examinationsuppgift1
 
         }
 
+        List<Contact> displayList = new();
+
         private void cmdSearch_Click(object sender, EventArgs e)
         {
             string searchInput = txtSearchField.Text;
-            List<Contact> contacts = Utilities.LoadContacts();
+            List<Contact> displayList = Utilities.LoadContacts();
 
-            List<Contact> returnList= contacts.Where(contact => string.Equals(contact.FirstName, searchInput, StringComparison.OrdinalIgnoreCase) ||
+            List<Contact> returnList = displayList.Where(contact => string.Equals(contact.FirstName, searchInput, StringComparison.OrdinalIgnoreCase) ||
                 string.Equals(contact.LastName, searchInput, StringComparison.OrdinalIgnoreCase) ||
                 string.Equals(contact.Address, searchInput, StringComparison.OrdinalIgnoreCase) ||
                 string.Equals(contact.PostalCode, searchInput, StringComparison.OrdinalIgnoreCase) ||
@@ -46,8 +48,29 @@ namespace Examinationsuppgift1
 
             foreach (Contact contact in returnList)
             {
-                lstSearchResult.Items.Add(contact.ToString());
+                string firstName = contact.FirstName;
+                string lastName = contact.LastName;
+                string displayText = $"{firstName} {lastName}";
+                lstSearchResult.Items.Add(displayText);
             }
+        }
+
+        private void lstSearchResult_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string inputContactName = lstSearchResult.SelectedItem.ToString();
+            string[] separatedName = Utilities.SplitChosenName(inputContactName);
+            (string firstName, string lastName) = (separatedName[0], separatedName[1]);
+
+            Contact displayContact = displayList.FirstOrDefault(contact => string.Equals(contact.FirstName, firstName, StringComparison.OrdinalIgnoreCase) && 
+                                                                string.Equals(contact.LastName, lastName, StringComparison.OrdinalIgnoreCase));
+
+            txtFirstName.Text = displayContact.FirstName;
+            txtLastName.Text = displayContact.LastName;
+            txtAddress.Text = displayContact.Address;
+            txtPostalCode.Text = displayContact.PostalCode;
+            txtCity.Text = displayContact.City;
+            txtPhoneNumber.Text = displayContact.PhoneNumber;
+            txtEmail.Text = displayContact.Email;
         }
     }
 }

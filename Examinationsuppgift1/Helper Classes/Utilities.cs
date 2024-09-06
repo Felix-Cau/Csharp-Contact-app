@@ -34,6 +34,9 @@ namespace Examinationsuppgift1
             }
         }
 
+        //internal static void SaveAsNewContact()
+        //    Not implemented yet
+
         internal static List<Contact> LoadContacts()
         {
             List<Contact> contacts = new();
@@ -52,6 +55,13 @@ namespace Examinationsuppgift1
 
                 return contacts;
             }
+        }
+
+
+        internal static string[] SplitChosenName(string a)
+        {
+            string[] strings = a.Split(' ');
+            return strings;
         }
     }
 }

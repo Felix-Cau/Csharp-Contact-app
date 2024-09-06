@@ -69,9 +69,9 @@
             label2.Font = new Font("Segoe UI", 11F);
             label2.Location = new Point(12, 34);
             label2.Name = "label2";
-            label2.Size = new Size(464, 20);
+            label2.Size = new Size(460, 20);
             label2.TabIndex = 1;
-            label2.Text = "I denna applikation kan du samlia dina kontakter samt redigera dem.";
+            label2.Text = "I denna applikation kan du samla dina kontakter samt redigera dem.";
             // 
             // label3
             // 
@@ -121,6 +121,7 @@
             lstSearchResult.Name = "lstSearchResult";
             lstSearchResult.Size = new Size(322, 304);
             lstSearchResult.TabIndex = 7;
+            lstSearchResult.SelectedIndexChanged += lstSearchResult_SelectedIndexChanged;
             // 
             // label5
             // 
