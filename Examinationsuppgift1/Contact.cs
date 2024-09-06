@@ -9,22 +9,22 @@ namespace Examinationsuppgift1
 {
     public class Contact
     {
-        private string firstName;
-        private string lastName;
-        private string address;
-        private string postalCode;
-        private string city;
-        private string phoneNumber;
-        private string email;
+        private string _firstName;
+        private string _lastName;
+        private string _address;
+        private string _postalCode;
+        private string _city;
+        private string _phoneNumber;
+        private string _email;
 
 
-        public string FirstName { get => firstName; set => firstName = value; }
-        public string LastName { get => lastName; set => lastName = value; }
-        public string Address { get => address; set => address = value; }
-        public string PostalCode { get => postalCode; set => postalCode = value; }
-        public string City { get => city; set => city = value; }
-        public string PhoneNumber { get => phoneNumber; set => phoneNumber = value; }
-        public string Email { get => email; set => email = value; }
+        public string FirstName { get => _firstName; set => _firstName = value; }
+        public string LastName { get => _lastName; set => _lastName = value; }
+        public string Address { get => _address; set => _address = value; }
+        public string PostalCode { get => _postalCode; set => _postalCode = value; }
+        public string City { get => _city; set => _city = value; }
+        public string PhoneNumber { get => _phoneNumber; set => _phoneNumber = value; }
+        public string Email { get => _email; set => _email = value; }
 
 
         public Contact()

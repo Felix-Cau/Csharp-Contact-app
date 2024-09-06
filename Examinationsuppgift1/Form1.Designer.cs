@@ -221,9 +221,9 @@
             label9.AutoSize = true;
             label9.Location = new Point(12, 295);
             label9.Name = "label9";
-            label9.Size = new Size(76, 15);
+            label9.Size = new Size(171, 15);
             label9.TabIndex = 19;
-            label9.Text = "Postnummer";
+            label9.Text = "Postnummer (utan mellanslag)";
             // 
             // label10
             // 
@@ -239,9 +239,9 @@
             label11.AutoSize = true;
             label11.Location = new Point(12, 401);
             label11.Name = "label11";
-            label11.Size = new Size(91, 15);
+            label11.Size = new Size(275, 15);
             label11.TabIndex = 21;
-            label11.Text = "Telefonnummer";
+            label11.Text = "Telefonnummer (utan mellanslag eller bindestreck)";
             // 
             // label12
             // 

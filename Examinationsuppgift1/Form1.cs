@@ -17,7 +17,7 @@ namespace Examinationsuppgift1
             }
             else
             {
-                Contact contact = new Contact(txtFirstName.Text.Trim(), txtLastName.Text.Trim(), txtAddress.Text.Trim(), txtPostalCode.Text.Trim().Replace(" ", ""), txtCity.Text.Trim(), txtPhoneNumber.Text.Trim(), txtEmail.Text.Trim());
+                Contact contact = new Contact(txtFirstName.Text.Trim(), txtLastName.Text.Trim(), txtAddress.Text.Trim(), txtPostalCode.Text.Trim().Replace(" ", ""), txtCity.Text.Trim(), txtPhoneNumber.Text.Trim().Replace(" ", ""), txtEmail.Text.Trim());
                 Utilities.SaveContact(contact);
                 MessageBox.Show("Contact saved to database");
                 txtFirstName.Clear();
@@ -31,12 +31,13 @@ namespace Examinationsuppgift1
 
         }
 
+        //Göra private readonly med constructor(om tid finns)
         List<Contact> displayList = new();
 
         private void cmdSearch_Click(object sender, EventArgs e)
         {
             string searchInput = txtSearchField.Text;
-            List<Contact> displayList = Utilities.LoadContacts();
+            displayList = Utilities.LoadContacts();
 
             List<Contact> returnList = displayList.Where(contact => string.Equals(contact.FirstName, searchInput, StringComparison.OrdinalIgnoreCase) ||
                 string.Equals(contact.LastName, searchInput, StringComparison.OrdinalIgnoreCase) ||
