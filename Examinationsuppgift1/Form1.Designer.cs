@@ -53,6 +53,7 @@
             cmdSaveToDb = new Button();
             label7 = new Label();
             cmdDeleteContact = new Button();
+            cmdResetSearch = new Button();
             ((System.ComponentModel.ISupportInitialize)contactBindingSource).BeginInit();
             SuspendLayout();
             // 
@@ -278,11 +279,23 @@
             cmdDeleteContact.Text = "Ta bort kontakt";
             cmdDeleteContact.UseVisualStyleBackColor = false;
             // 
+            // cmdResetSearch
+            // 
+            cmdResetSearch.BackColor = SystemColors.ControlDarkDark;
+            cmdResetSearch.Location = new Point(295, 552);
+            cmdResetSearch.Name = "cmdResetSearch";
+            cmdResetSearch.Size = new Size(95, 36);
+            cmdResetSearch.TabIndex = 26;
+            cmdResetSearch.Text = "Reset";
+            cmdResetSearch.UseVisualStyleBackColor = false;
+            cmdResetSearch.Click += cmdResetSearch_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(741, 600);
+            Controls.Add(cmdResetSearch);
             Controls.Add(cmdDeleteContact);
             Controls.Add(label7);
             Controls.Add(cmdSaveToDb);
@@ -338,5 +351,6 @@
         private Label label7;
         private BindingSource contactBindingSource;
         private Button cmdDeleteContact;
+        private Button cmdResetSearch;
     }
 }

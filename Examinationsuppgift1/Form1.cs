@@ -47,10 +47,7 @@ namespace Examinationsuppgift1
                     txtPhoneNumber.Clear();
                     txtEmail.Clear();
                 }
-
-
             }
-
         }
 
         //Göra private readonly med constructor(om tid finns)
@@ -61,7 +58,7 @@ namespace Examinationsuppgift1
             string searchInput = txtSearchField.Text.Trim();
 
             //Denna helpermetod går att skriva som en enstaka rad här egentligen. Är det dumt att bryta ut något som är så simpelt?
-            string[] searchInputAsArray =  Utilities.SearchInputToArray(searchInput);
+            string[] searchInputAsArray = Utilities.SearchInputToArray(searchInput);
             loadedList = Utilities.LoadContacts();
 
             List<Contact> returnList = Utilities.SearchMethod(searchInputAsArray, loadedList);
@@ -81,5 +78,15 @@ namespace Examinationsuppgift1
             txtEmail.Text = displayContact.Email;
         }
 
+        private void cmdResetSearch_Click(object sender, EventArgs e)
+        {
+            txtName.Text = string.Empty;
+            txtAddress.Text = string.Empty;
+            txtPostalCode.Text = string.Empty;
+            txtCity.Text = string.Empty;
+            txtPhoneNumber.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+            txtSearchField.Text = string.Empty;
+        }
     }
 }

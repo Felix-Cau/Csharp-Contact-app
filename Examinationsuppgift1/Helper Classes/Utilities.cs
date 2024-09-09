@@ -25,7 +25,6 @@ namespace Examinationsuppgift1
                 {
                     writer.WriteLine(contactAsString);
                 }
-
             }
             else
             {
@@ -72,6 +71,7 @@ namespace Examinationsuppgift1
                     if (doesContactExist)
                         return true;
                 }
+
                 return false;
             }
         }
