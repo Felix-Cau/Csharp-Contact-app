@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -35,22 +36,23 @@
             label4 = new Label();
             cmdSearch = new Button();
             lstSearchResult = new ListBox();
+            contactBindingSource = new BindingSource(components);
             label5 = new Label();
-            txtFirstName = new TextBox();
+            txtName = new TextBox();
             label6 = new Label();
-            txtLastName = new TextBox();
             txtAddress = new TextBox();
             txtPostalCode = new TextBox();
             txtCity = new TextBox();
             txtPhoneNumber = new TextBox();
             txtEmail = new TextBox();
-            label7 = new Label();
             label8 = new Label();
             label9 = new Label();
             label10 = new Label();
             label11 = new Label();
             label12 = new Label();
             cmdSaveToDb = new Button();
+            label7 = new Label();
+            ((System.ComponentModel.ISupportInitialize)contactBindingSource).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -114,6 +116,8 @@
             // 
             // lstSearchResult
             // 
+            lstSearchResult.DataSource = contactBindingSource;
+            lstSearchResult.DisplayMember = "Name";
             lstSearchResult.Font = new Font("Segoe UI", 11F);
             lstSearchResult.FormattingEnabled = true;
             lstSearchResult.ItemHeight = 20;
@@ -122,6 +126,10 @@
             lstSearchResult.Size = new Size(322, 304);
             lstSearchResult.TabIndex = 7;
             lstSearchResult.SelectedIndexChanged += lstSearchResult_SelectedIndexChanged;
+            // 
+            // contactBindingSource
+            // 
+            contactBindingSource.DataSource = typeof(Contact);
             // 
             // label5
             // 
@@ -133,13 +141,13 @@
             label5.TabIndex = 8;
             label5.Text = "Kontaktuppgifter";
             // 
-            // txtFirstName
+            // txtName
             // 
-            txtFirstName.Font = new Font("Segoe UI", 11F);
-            txtFirstName.Location = new Point(12, 150);
-            txtFirstName.Name = "txtFirstName";
-            txtFirstName.Size = new Size(308, 27);
-            txtFirstName.TabIndex = 9;
+            txtName.Font = new Font("Segoe UI", 11F);
+            txtName.Location = new Point(12, 150);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(308, 27);
+            txtName.TabIndex = 9;
             // 
             // label6
             // 
@@ -150,18 +158,10 @@
             label6.TabIndex = 10;
             label6.Text = "Förnamn";
             // 
-            // txtLastName
-            // 
-            txtLastName.Font = new Font("Segoe UI", 11F);
-            txtLastName.Location = new Point(12, 207);
-            txtLastName.Name = "txtLastName";
-            txtLastName.Size = new Size(308, 27);
-            txtLastName.TabIndex = 11;
-            // 
             // txtAddress
             // 
             txtAddress.Font = new Font("Segoe UI", 11F);
-            txtAddress.Location = new Point(12, 260);
+            txtAddress.Location = new Point(12, 207);
             txtAddress.Name = "txtAddress";
             txtAddress.Size = new Size(308, 27);
             txtAddress.TabIndex = 12;
@@ -169,7 +169,7 @@
             // txtPostalCode
             // 
             txtPostalCode.Font = new Font("Segoe UI", 11F);
-            txtPostalCode.Location = new Point(12, 313);
+            txtPostalCode.Location = new Point(12, 264);
             txtPostalCode.Name = "txtPostalCode";
             txtPostalCode.Size = new Size(308, 27);
             txtPostalCode.TabIndex = 13;
@@ -177,7 +177,7 @@
             // txtCity
             // 
             txtCity.Font = new Font("Segoe UI", 11F);
-            txtCity.Location = new Point(12, 366);
+            txtCity.Location = new Point(12, 321);
             txtCity.Name = "txtCity";
             txtCity.Size = new Size(308, 27);
             txtCity.TabIndex = 14;
@@ -185,7 +185,7 @@
             // txtPhoneNumber
             // 
             txtPhoneNumber.Font = new Font("Segoe UI", 11F);
-            txtPhoneNumber.Location = new Point(12, 419);
+            txtPhoneNumber.Location = new Point(12, 378);
             txtPhoneNumber.Name = "txtPhoneNumber";
             txtPhoneNumber.Size = new Size(308, 27);
             txtPhoneNumber.TabIndex = 15;
@@ -193,24 +193,15 @@
             // txtEmail
             // 
             txtEmail.Font = new Font("Segoe UI", 11F);
-            txtEmail.Location = new Point(12, 473);
+            txtEmail.Location = new Point(12, 435);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(308, 27);
             txtEmail.TabIndex = 16;
             // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(12, 189);
-            label7.Name = "label7";
-            label7.Size = new Size(62, 15);
-            label7.TabIndex = 17;
-            label7.Text = "Efternamn";
-            // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(12, 242);
+            label8.Location = new Point(12, 189);
             label8.Name = "label8";
             label8.Size = new Size(42, 15);
             label8.TabIndex = 18;
@@ -219,7 +210,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(12, 295);
+            label9.Location = new Point(12, 246);
             label9.Name = "label9";
             label9.Size = new Size(171, 15);
             label9.TabIndex = 19;
@@ -228,7 +219,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(12, 348);
+            label10.Location = new Point(12, 303);
             label10.Name = "label10";
             label10.Size = new Size(30, 15);
             label10.TabIndex = 20;
@@ -237,7 +228,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(12, 401);
+            label11.Location = new Point(12, 360);
             label11.Name = "label11";
             label11.Size = new Size(275, 15);
             label11.TabIndex = 21;
@@ -246,7 +237,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(12, 455);
+            label12.Location = new Point(12, 417);
             label12.Name = "label12";
             label12.Size = new Size(41, 15);
             label12.TabIndex = 22;
@@ -255,34 +246,42 @@
             // cmdSaveToDb
             // 
             cmdSaveToDb.Font = new Font("Segoe UI", 11F);
-            cmdSaveToDb.Location = new Point(12, 506);
+            cmdSaveToDb.Location = new Point(12, 468);
             cmdSaveToDb.Name = "cmdSaveToDb";
-            cmdSaveToDb.Size = new Size(95, 36);
+            cmdSaveToDb.Size = new Size(308, 36);
             cmdSaveToDb.TabIndex = 23;
-            cmdSaveToDb.Text = "Spara";
+            cmdSaveToDb.Text = "Spara / Spara ändringar";
             cmdSaveToDb.UseVisualStyleBackColor = true;
             cmdSaveToDb.Click += cmdSaveToDb_Click;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 9F);
+            label7.Location = new Point(12, 132);
+            label7.Name = "label7";
+            label7.Size = new Size(40, 15);
+            label7.TabIndex = 24;
+            label7.Text = "Namn";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1070, 757);
+            Controls.Add(label7);
             Controls.Add(cmdSaveToDb);
             Controls.Add(label12);
             Controls.Add(label11);
             Controls.Add(label10);
             Controls.Add(label9);
             Controls.Add(label8);
-            Controls.Add(label7);
             Controls.Add(txtEmail);
             Controls.Add(txtPhoneNumber);
             Controls.Add(txtCity);
             Controls.Add(txtPostalCode);
             Controls.Add(txtAddress);
-            Controls.Add(txtLastName);
-            Controls.Add(label6);
-            Controls.Add(txtFirstName);
+            Controls.Add(txtName);
             Controls.Add(label5);
             Controls.Add(lstSearchResult);
             Controls.Add(cmdSearch);
@@ -293,6 +292,7 @@
             Controls.Add(label1);
             Name = "Form1";
             Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)contactBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -307,20 +307,20 @@
         private Button cmdSearch;
         private ListBox lstSearchResult;
         private Label label5;
-        private TextBox txtFirstName;
+        private TextBox txtName;
         private Label label6;
-        private TextBox txtLastName;
         private TextBox txtAddress;
         private TextBox txtPostalCode;
         private TextBox txtCity;
         private TextBox txtPhoneNumber;
         private TextBox txtEmail;
-        private Label label7;
         private Label label8;
         private Label label9;
         private Label label10;
         private Label label11;
         private Label label12;
         private Button cmdSaveToDb;
+        private Label label7;
+        private BindingSource contactBindingSource;
     }
 }

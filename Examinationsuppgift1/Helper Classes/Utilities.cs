@@ -12,6 +12,8 @@ namespace Examinationsuppgift1
     {
         const string filePath = @"C:\dev\Skola\CsharpKurs1\DbFiles\adressbok.txt";
 
+        static string contactInDbAsString = string.Empty;
+
         internal static void SaveContact(Contact contact)
         {
             if (File.Exists(filePath))
@@ -22,6 +24,7 @@ namespace Examinationsuppgift1
                 {
                     writer.WriteLine(contactAsString);
                 }
+
             }
             else
             {
@@ -33,9 +36,6 @@ namespace Examinationsuppgift1
                 }
             }
         }
-
-        //internal static void SaveAsNewContact()
-        //    Not implemented yet
 
         internal static List<Contact> LoadContacts()
         {
@@ -57,11 +57,29 @@ namespace Examinationsuppgift1
             }
         }
 
-
-        internal static string[] SplitChosenName(string a)
+        internal static bool IsJsonStringInFile(string input)
         {
-            string[] strings = a.Split(' ');
-            return strings;
+            using (StreamReader reader = new StreamReader(filePath))
+            {
+                while (!reader.EndOfStream)
+                {
+                    contactInDbAsString = reader.ReadLine();
+
+                    bool doesContactExist = string.Equals(contactInDbAsString, input, StringComparison.OrdinalIgnoreCase);
+
+                    //Med eller utan curly brackets?
+                    if (doesContactExist)
+                        return true;
+                }
+                return false;
+            }
+        }
+
+        internal static void OverwriteContactStringInFile(string input)
+        {
+            string fileContent = File.ReadAllText(filePath);
+            fileContent = fileContent.Replace(contactInDbAsString, input);
+            File.WriteAllText(filePath, fileContent);
         }
     }
 }

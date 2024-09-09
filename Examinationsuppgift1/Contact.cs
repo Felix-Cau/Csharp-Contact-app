@@ -9,8 +9,7 @@ namespace Examinationsuppgift1
 {
     public class Contact
     {
-        private string _firstName;
-        private string _lastName;
+        private string _name;
         private string _address;
         private string _postalCode;
         private string _city;
@@ -18,8 +17,7 @@ namespace Examinationsuppgift1
         private string _email;
 
 
-        public string FirstName { get => _firstName; set => _firstName = value; }
-        public string LastName { get => _lastName; set => _lastName = value; }
+        public string Name { get => _name; set => _name = value; }
         public string Address { get => _address; set => _address = value; }
         public string PostalCode { get => _postalCode; set => _postalCode = value; }
         public string City { get => _city; set => _city = value; }
@@ -29,18 +27,16 @@ namespace Examinationsuppgift1
 
         public Contact()
         {
-            FirstName = $"{Messages.propertyErrorMessage}";
-            LastName = $"{Messages.propertyErrorMessage}";
+            Name = $"{Messages.propertyErrorMessage}";
             Address = $"{Messages.propertyErrorMessage}";
             PostalCode = $"{Messages.propertyErrorMessage}";
             City = $"{Messages.propertyErrorMessage}";
             PhoneNumber = $"{Messages.propertyErrorMessage}";
             Email = $"{Messages.propertyErrorMessage}";
         }
-        public Contact(string firstName, string lastName, string address, string postalCode, string city, string phoneNumber, string email)
+        public Contact(string name, string address, string postalCode, string city, string phoneNumber, string email)
         {
-            FirstName = firstName;
-            LastName = lastName;
+            Name = name;
             Address = address;
             PostalCode = postalCode;
             City = city;
