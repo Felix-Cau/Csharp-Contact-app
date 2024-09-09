@@ -16,6 +16,7 @@ namespace Examinationsuppgift1
 
         internal static void SaveContact(Contact contact)
         {
+            //Lägga in try/catch?
             if (File.Exists(filePath))
             {
                 string contactAsString = JsonSerializer.Serialize(contact);
@@ -80,6 +81,35 @@ namespace Examinationsuppgift1
             string fileContent = File.ReadAllText(filePath);
             fileContent = fileContent.Replace(contactInDbAsString, input);
             File.WriteAllText(filePath, fileContent);
+        }
+
+        internal static void DeleteContact(string input)
+        {
+            string fileContent = File.ReadAllText(filePath);
+            fileContent = fileContent.Replace(input, string.Empty);
+            File.WriteAllText(filePath, fileContent);
+        }
+
+        internal static string[] SearchInputToArray(string searchInput)
+        {
+            string[] searchInputArray = searchInput.Split(' ');
+
+            return searchInputArray;
+        }
+
+        internal static List<string> SearchMethod(string[] searchInput, List<Contact> loadedList)
+        {
+            List<Contact> returnList = new();
+            
+            for (int i = 0; i < searchInput.Length; i++)
+            {
+                if (string.Equals(contact => loadedList.Name, searchInput, StringComparison.OrdinalIgnoreCase) ||
+                                                        string.Equals(contact.Address, searchInput, StringComparison.OrdinalIgnoreCase) ||
+                                                        string.Equals(contact.PostalCode, searchInput, StringComparison.OrdinalIgnoreCase) ||
+                                                        string.Equals(contact.City, searchInput, StringComparison.OrdinalIgnoreCase) ||
+                                                        string.Equals(contact.PhoneNumber, searchInput, StringComparison.OrdinalIgnoreCase) ||
+                                                        string.Equals(contact.Email, searchInput, StringComparison.OrdinalIgnoreCase)).ToList());
+            }
         }
     }
 }

@@ -52,6 +52,7 @@
             label12 = new Label();
             cmdSaveToDb = new Button();
             label7 = new Label();
+            cmdDeleteContact = new Button();
             ((System.ComponentModel.ISupportInitialize)contactBindingSource).BeginInit();
             SuspendLayout();
             // 
@@ -79,7 +80,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 11F);
-            label3.Location = new Point(736, 34);
+            label3.Location = new Point(366, 127);
             label3.Name = "label3";
             label3.Size = new Size(87, 20);
             label3.TabIndex = 2;
@@ -88,7 +89,7 @@
             // txtSearchField
             // 
             txtSearchField.Font = new Font("Segoe UI", 11F);
-            txtSearchField.Location = new Point(736, 57);
+            txtSearchField.Location = new Point(366, 150);
             txtSearchField.Name = "txtSearchField";
             txtSearchField.Size = new Size(322, 27);
             txtSearchField.TabIndex = 3;
@@ -97,7 +98,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 11F);
-            label4.Location = new Point(736, 127);
+            label4.Location = new Point(366, 219);
             label4.Name = "label4";
             label4.Size = new Size(82, 20);
             label4.TabIndex = 5;
@@ -105,13 +106,14 @@
             // 
             // cmdSearch
             // 
+            cmdSearch.BackColor = SystemColors.ControlDark;
             cmdSearch.Font = new Font("Segoe UI", 11F);
-            cmdSearch.Location = new Point(963, 86);
+            cmdSearch.Location = new Point(593, 183);
             cmdSearch.Name = "cmdSearch";
             cmdSearch.Size = new Size(95, 36);
             cmdSearch.TabIndex = 6;
             cmdSearch.Text = "Sök";
-            cmdSearch.UseVisualStyleBackColor = true;
+            cmdSearch.UseVisualStyleBackColor = false;
             cmdSearch.Click += cmdSearch_Click;
             // 
             // lstSearchResult
@@ -121,7 +123,7 @@
             lstSearchResult.Font = new Font("Segoe UI", 11F);
             lstSearchResult.FormattingEnabled = true;
             lstSearchResult.ItemHeight = 20;
-            lstSearchResult.Location = new Point(736, 150);
+            lstSearchResult.Location = new Point(366, 242);
             lstSearchResult.Name = "lstSearchResult";
             lstSearchResult.Size = new Size(322, 304);
             lstSearchResult.TabIndex = 7;
@@ -245,13 +247,14 @@
             // 
             // cmdSaveToDb
             // 
+            cmdSaveToDb.BackColor = SystemColors.ControlDark;
             cmdSaveToDb.Font = new Font("Segoe UI", 11F);
             cmdSaveToDb.Location = new Point(12, 468);
             cmdSaveToDb.Name = "cmdSaveToDb";
             cmdSaveToDb.Size = new Size(308, 36);
             cmdSaveToDb.TabIndex = 23;
             cmdSaveToDb.Text = "Spara / Spara ändringar";
-            cmdSaveToDb.UseVisualStyleBackColor = true;
+            cmdSaveToDb.UseVisualStyleBackColor = false;
             cmdSaveToDb.Click += cmdSaveToDb_Click;
             // 
             // label7
@@ -264,11 +267,23 @@
             label7.TabIndex = 24;
             label7.Text = "Namn";
             // 
+            // cmdDeleteContact
+            // 
+            cmdDeleteContact.BackColor = SystemColors.ControlDark;
+            cmdDeleteContact.Font = new Font("Segoe UI", 11F);
+            cmdDeleteContact.Location = new Point(12, 510);
+            cmdDeleteContact.Name = "cmdDeleteContact";
+            cmdDeleteContact.Size = new Size(308, 36);
+            cmdDeleteContact.TabIndex = 25;
+            cmdDeleteContact.Text = "Ta bort kontakt";
+            cmdDeleteContact.UseVisualStyleBackColor = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1070, 757);
+            ClientSize = new Size(741, 600);
+            Controls.Add(cmdDeleteContact);
             Controls.Add(label7);
             Controls.Add(cmdSaveToDb);
             Controls.Add(label12);
@@ -322,5 +337,6 @@
         private Button cmdSaveToDb;
         private Label label7;
         private BindingSource contactBindingSource;
+        private Button cmdDeleteContact;
     }
 }

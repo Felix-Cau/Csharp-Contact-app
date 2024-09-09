@@ -58,15 +58,20 @@ namespace Examinationsuppgift1
 
         private void cmdSearch_Click(object sender, EventArgs e)
         {
-            string searchInput = txtSearchField.Text;
+            string searchInput = txtSearchField.Text.Trim();
+
+            //Denna helpermetod går att skriva som en enstaka rad här egentligen. Är det dumt att bryta ut något som är så simpelt?
+            string[] searchInputAsArray =  Utilities.SearchInputToArray(searchInput);
             loadedList = Utilities.LoadContacts();
 
-            List<Contact> returnList = loadedList.Where(contact => string.Equals(contact.Name, searchInput, StringComparison.OrdinalIgnoreCase) ||
-                                                        string.Equals(contact.Address, searchInput, StringComparison.OrdinalIgnoreCase) ||
-                                                        string.Equals(contact.PostalCode, searchInput, StringComparison.OrdinalIgnoreCase) ||
-                                                        string.Equals(contact.City, searchInput, StringComparison.OrdinalIgnoreCase) ||
-                                                        string.Equals(contact.PhoneNumber, searchInput, StringComparison.OrdinalIgnoreCase) ||
-                                                        string.Equals(contact.Email, searchInput, StringComparison.OrdinalIgnoreCase)).ToList();
+            ////Börja nya raden med punkt eller avsluta raden ovanför med punkt?
+            //List<Contact> returnList = loadedList.DistinctBy(contact => contact.Email)
+            //                                     .Where(contact => string.Equals(contact.Name, searchInput, StringComparison.OrdinalIgnoreCase) ||
+            //                                            string.Equals(contact.Address, searchInput, StringComparison.OrdinalIgnoreCase) ||
+            //                                            string.Equals(contact.PostalCode, searchInput, StringComparison.OrdinalIgnoreCase) ||
+            //                                            string.Equals(contact.City, searchInput, StringComparison.OrdinalIgnoreCase) ||
+            //                                            string.Equals(contact.PhoneNumber, searchInput, StringComparison.OrdinalIgnoreCase) ||
+            //                                            string.Equals(contact.Email, searchInput, StringComparison.OrdinalIgnoreCase)).ToList();
 
             lstSearchResult.DataSource = returnList;
 
