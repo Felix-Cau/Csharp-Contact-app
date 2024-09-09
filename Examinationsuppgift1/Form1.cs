@@ -64,17 +64,9 @@ namespace Examinationsuppgift1
             string[] searchInputAsArray =  Utilities.SearchInputToArray(searchInput);
             loadedList = Utilities.LoadContacts();
 
-            ////Börja nya raden med punkt eller avsluta raden ovanför med punkt?
-            //List<Contact> returnList = loadedList.DistinctBy(contact => contact.Email)
-            //                                     .Where(contact => string.Equals(contact.Name, searchInput, StringComparison.OrdinalIgnoreCase) ||
-            //                                            string.Equals(contact.Address, searchInput, StringComparison.OrdinalIgnoreCase) ||
-            //                                            string.Equals(contact.PostalCode, searchInput, StringComparison.OrdinalIgnoreCase) ||
-            //                                            string.Equals(contact.City, searchInput, StringComparison.OrdinalIgnoreCase) ||
-            //                                            string.Equals(contact.PhoneNumber, searchInput, StringComparison.OrdinalIgnoreCase) ||
-            //                                            string.Equals(contact.Email, searchInput, StringComparison.OrdinalIgnoreCase)).ToList();
+            List<Contact> returnList = Utilities.SearchMethod(searchInputAsArray, loadedList);
 
             lstSearchResult.DataSource = returnList;
-
         }
 
         private void lstSearchResult_SelectedIndexChanged(object sender, EventArgs e)

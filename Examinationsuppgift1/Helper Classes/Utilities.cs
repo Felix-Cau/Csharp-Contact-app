@@ -97,19 +97,30 @@ namespace Examinationsuppgift1
             return searchInputArray;
         }
 
-        internal static List<string> SearchMethod(string[] searchInput, List<Contact> loadedList)
+        internal static List<Contact> SearchMethod(string[] searchInput, List<Contact> a)
         {
-            List<Contact> returnList = new();
+            List<Contact> loadedList = a;
+            List<Contact> returnUnfilteredList = new();
             
             for (int i = 0; i < searchInput.Length; i++)
             {
-                if (string.Equals(contact => loadedList.Name, searchInput, StringComparison.OrdinalIgnoreCase) ||
-                                                        string.Equals(contact.Address, searchInput, StringComparison.OrdinalIgnoreCase) ||
-                                                        string.Equals(contact.PostalCode, searchInput, StringComparison.OrdinalIgnoreCase) ||
-                                                        string.Equals(contact.City, searchInput, StringComparison.OrdinalIgnoreCase) ||
-                                                        string.Equals(contact.PhoneNumber, searchInput, StringComparison.OrdinalIgnoreCase) ||
-                                                        string.Equals(contact.Email, searchInput, StringComparison.OrdinalIgnoreCase)).ToList());
+                foreach (Contact contact in loadedList)
+                {
+                    if (contact.Name.Contains(searchInput[i], StringComparison.OrdinalIgnoreCase) ||
+                        contact.Address.Contains(searchInput[i], StringComparison.OrdinalIgnoreCase) ||
+                        contact.PostalCode.Contains(searchInput[i], StringComparison.OrdinalIgnoreCase) ||
+                        contact.City.Contains(searchInput[i], StringComparison.OrdinalIgnoreCase) ||
+                        contact.PhoneNumber.Contains(searchInput[i], StringComparison.OrdinalIgnoreCase) ||
+                        contact.Email.Contains(searchInput[i], StringComparison.OrdinalIgnoreCase))
+                    {
+                        returnUnfilteredList.Add(contact);
+                    }
+                }
             }
+
+            List<Contact> returnFilteredList = returnUnfilteredList.DistinctBy(contact => contact.Email).ToList();
+
+            return returnFilteredList;
         }
     }
 }
