@@ -1,10 +1,4 @@
-﻿using Microsoft.VisualBasic.ApplicationServices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿using System.Text.Json;
 
 namespace Examinationsuppgift1
 {
@@ -76,6 +70,8 @@ namespace Examinationsuppgift1
             }
         }
 
+        // Ändras namnet i kontakten så fångast inte overwriten. Lägga till att kolla specifikt på email?
+        // Om det finns en användare med samma mailadress, ska den "gamla tas bort"?
         internal static void OverwriteContactStringInFile(string input)
         {
             string fileContent = File.ReadAllText(filePath);
