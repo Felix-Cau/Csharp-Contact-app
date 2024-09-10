@@ -2,9 +2,9 @@ using System.Text.Json;
 
 namespace Examinationsuppgift1
 {
-    public partial class Form1 : Form
+    public partial class AddressBook : Form
     {
-        public Form1()
+        public AddressBook()
         {
             InitializeComponent();
         }
@@ -50,20 +50,28 @@ namespace Examinationsuppgift1
             }
         }
 
-        //Göra private readonly med constructor(om tid finns)
-        List<Contact> loadedList = new();
 
         private void cmdSearch_Click(object sender, EventArgs e)
         {
             string searchInput = txtSearchField.Text.Trim();
 
-            //Denna helpermetod går att skriva som en enstaka rad här egentligen. Är det dumt att bryta ut något som är så simpelt?
-            string[] searchInputAsArray = Utilities.SearchInputToArray(searchInput);
-            loadedList = Utilities.LoadContacts();
+            if (string.IsNullOrEmpty(searchInput))
+            {
+                MessageBox.Show("Skriv in en sökparameter. Du kan ej göra en tom sökning.");
+            }
+            else
+            {
+                //string[] searchInputAsArray = Utilities.SearchInputToArray(searchInput);
 
-            List<Contact> returnList = Utilities.SearchMethod(searchInputAsArray, loadedList);
+                //loadedList = Utilities.LoadContacts();
 
-            lstSearchResult.DataSource = returnList;
+                //returnList = Utilities.SearchMethod(searchInputAsArray, loadedList);
+
+                //lstSearchResult.DataSource = returnList;
+                
+                //Mer komprimerad version
+                lstSearchResult.DataSource = Utilities.SearchMethod(Utilities.SearchInputToArray(searchInput), Utilities.LoadContacts());
+            }
         }
 
         private void lstSearchResult_SelectedIndexChanged(object sender, EventArgs e)
@@ -80,6 +88,24 @@ namespace Examinationsuppgift1
 
         private void cmdResetSearch_Click(object sender, EventArgs e)
         {
+            txtName.Text = string.Empty;
+            txtAddress.Text = string.Empty;
+            txtPostalCode.Text = string.Empty;
+            txtCity.Text = string.Empty;
+            txtPhoneNumber.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+            txtSearchField.Text = string.Empty;
+        }
+
+        private void cmdDeleteContact_Click(object sender, EventArgs e)
+        {
+            Contact displayedContact = (Contact)lstSearchResult.SelectedItem;
+
+            string contactAsStringToBeRemoved = JsonSerializer.Serialize(displayedContact);
+
+            Utilities.DeleteContact(contactAsStringToBeRemoved);
+
+            MessageBox.Show("Kontakten raderades.");
             txtName.Text = string.Empty;
             txtAddress.Text = string.Empty;
             txtPostalCode.Text = string.Empty;

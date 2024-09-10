@@ -35,20 +35,19 @@ namespace Examinationsuppgift1
         {
             List<Contact> contacts = new();
 
-            using (StreamReader reader = new StreamReader(filePath))
-            {
-
-                while (!reader.EndOfStream)
+                using (StreamReader reader = new StreamReader(filePath))
                 {
-                    string contactAsString = reader.ReadLine();
+                    while (!reader.EndOfStream)
+                    {
+                        string contactAsString = reader.ReadLine();
 
-                    Contact contact = JsonSerializer.Deserialize<Contact>(contactAsString);
+                        Contact contact = JsonSerializer.Deserialize<Contact>(contactAsString);
 
-                    contacts.Add(contact);
+                        contacts.Add(contact);
+                    }
                 }
 
-                return contacts;
-            }
+            return contacts;
         }
 
         internal static bool IsJsonStringInFile(string input)
@@ -61,7 +60,6 @@ namespace Examinationsuppgift1
 
                     bool doesContactExist = string.Equals(contactInDbAsString, input, StringComparison.OrdinalIgnoreCase);
 
-                    //Med eller utan curly brackets?
                     if (doesContactExist)
                         return true;
                 }
@@ -70,8 +68,6 @@ namespace Examinationsuppgift1
             }
         }
 
-        // Ändras namnet i kontakten så fångast inte overwriten. Lägga till att kolla specifikt på email?
-        // Om det finns en användare med samma mailadress, ska den "gamla tas bort"?
         internal static void OverwriteContactStringInFile(string input)
         {
             string fileContent = File.ReadAllText(filePath);
@@ -81,9 +77,13 @@ namespace Examinationsuppgift1
 
         internal static void DeleteContact(string input)
         {
-            string fileContent = File.ReadAllText(filePath);
-            fileContent = fileContent.Replace(input, string.Empty);
-            File.WriteAllText(filePath, fileContent);
+            //Läser in alla rader som strings i en lista av strings.
+            List<string> jsonStringLines = File.ReadAllLines(filePath).ToList();
+            //Tar bort den string som matchar den jag vill ta bort.
+            jsonStringLines.RemoveAll(line => line.Equals(input));
+            //Skriver tillbaka alla kvarvarande strängar till filen.
+            File.WriteAllLines(filePath, jsonStringLines);
+
         }
 
         internal static string[] SearchInputToArray(string searchInput)

@@ -1,6 +1,6 @@
 ﻿namespace Examinationsuppgift1
 {
-    partial class Form1
+    partial class AddressBook
     {
         /// <summary>
         ///  Required designer variable.
@@ -278,6 +278,7 @@
             cmdDeleteContact.TabIndex = 25;
             cmdDeleteContact.Text = "Ta bort kontakt";
             cmdDeleteContact.UseVisualStyleBackColor = false;
+            cmdDeleteContact.Click += cmdDeleteContact_Click;
             // 
             // cmdResetSearch
             // 
@@ -290,7 +291,7 @@
             cmdResetSearch.UseVisualStyleBackColor = false;
             cmdResetSearch.Click += cmdResetSearch_Click;
             // 
-            // Form1
+            // AddressBook
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -318,8 +319,8 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Name = "Form1";
-            Text = "Form1";
+            Name = "AddressBook";
+            Text = "Kontaktsamling";
             ((System.ComponentModel.ISupportInitialize)contactBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
