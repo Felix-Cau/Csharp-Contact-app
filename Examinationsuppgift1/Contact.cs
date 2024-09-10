@@ -9,20 +9,12 @@ namespace Examinationsuppgift1
 {
     public class Contact
     {
-        private string _name;
-        private string _address;
-        private string _postalCode;
-        private string _city;
-        private string _phoneNumber;
-        private string _email;
-
-
-        public string Name { get => _name; set => _name = value; }
-        public string Address { get => _address; set => _address = value; }
-        public string PostalCode { get => _postalCode; set => _postalCode = value; }
-        public string City { get => _city; set => _city = value; }
-        public string PhoneNumber { get => _phoneNumber; set => _phoneNumber = value; }
-        public string Email { get => _email; set => _email = value; }
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public string PostalCode { get; set; }
+        public string City { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Email { get; set; }
 
 
         public Contact()
