@@ -19,8 +19,8 @@ namespace Examinationsuppgift1
             }
             else
             {
-                Contact contact = new Contact(txtName.Text.Trim(), txtAddress.Text.Trim(), txtPostalCode.Text.Trim().Replace(" ", ""),
-                                                txtCity.Text.Trim(), txtPhoneNumber.Text.Trim().Replace(" ", ""), txtEmail.Text.Trim());
+                Contact contact = new(txtName.Text.Trim(), txtAddress.Text.Trim(), txtPostalCode.Text.Trim().Replace(" ", ""),
+                                      txtCity.Text.Trim(), txtPhoneNumber.Text.Trim().Replace(" ", ""), txtEmail.Text.Trim());
 
                 string contactAsString = JsonSerializer.Serialize(contact);
                 bool doesContactExist = Utilities.IsJsonStringInFile(contactAsString);
@@ -61,15 +61,6 @@ namespace Examinationsuppgift1
             }
             else
             {
-                //string[] searchInputAsArray = Utilities.SearchInputToArray(searchInput);
-
-                //loadedList = Utilities.LoadContacts();
-
-                //returnList = Utilities.SearchMethod(searchInputAsArray, loadedList);
-
-                //lstSearchResult.DataSource = returnList;
-                
-                //Mer komprimerad version
                 lstSearchResult.DataSource = Utilities.SearchMethod(Utilities.SearchInputToArray(searchInput), Utilities.LoadContacts());
             }
         }
@@ -101,9 +92,7 @@ namespace Examinationsuppgift1
         {
             Contact displayedContact = (Contact)lstSearchResult.SelectedItem;
 
-            string contactAsStringToBeRemoved = JsonSerializer.Serialize(displayedContact);
-
-            Utilities.DeleteContact(contactAsStringToBeRemoved);
+            Utilities.DeleteContact(JsonSerializer.Serialize(displayedContact));
 
             MessageBox.Show("Kontakten raderades.");
             txtName.Text = string.Empty;
