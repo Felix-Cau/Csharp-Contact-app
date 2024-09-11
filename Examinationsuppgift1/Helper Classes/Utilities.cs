@@ -2,13 +2,13 @@
 
 namespace Examinationsuppgift1
 {
-    internal static class Utilities
+    public static class Utilities
     {
         const string filePath = @"C:\dev\Skola\CsharpKurs1\DbFiles\adressbok.txt";
 
         static string contactInDbAsString = string.Empty;
 
-        internal static void SaveContact(Contact contact)
+        public static void SaveContact(Contact contact)
         {
             //Lägga in try/catch?
             if (File.Exists(filePath))
@@ -31,7 +31,7 @@ namespace Examinationsuppgift1
             }
         }
 
-        internal static List<Contact> LoadContacts()
+        public static List<Contact> LoadContacts()
         {
             List<Contact> contacts = new();
 
@@ -50,7 +50,7 @@ namespace Examinationsuppgift1
             return contacts;
         }
 
-        internal static bool IsJsonStringInFile(string input)
+        public static bool IsJsonStringInFile(string input)
         {
             using (StreamReader reader = new StreamReader(filePath))
             {
@@ -68,14 +68,14 @@ namespace Examinationsuppgift1
             }
         }
 
-        internal static void OverwriteContactStringInFile(string input)
+        public static void OverwriteContactStringInFile(string input)
         {
             string fileContent = File.ReadAllText(filePath);
             fileContent = fileContent.Replace(contactInDbAsString, input);
             File.WriteAllText(filePath, fileContent);
         }
 
-        internal static void DeleteContact(string input)
+        public static void DeleteContact(string input)
         {
             //Läser in alla rader som strings i en lista av strings.
             List<string> jsonStringLines = File.ReadAllLines(filePath).ToList();
@@ -86,14 +86,14 @@ namespace Examinationsuppgift1
 
         }
 
-        internal static string[] SearchInputToArray(string searchInput)
+        public static string[] SearchInputToArray(string searchInput)
         {
             string[] searchInputArray = searchInput.Split(' ');
 
             return searchInputArray;
         }
 
-        internal static List<Contact> SearchMethod(string[] searchInput, List<Contact> a)
+        public static List<Contact> SearchMethod(string[] searchInput, List<Contact> a)
         {
             List<Contact> loadedList = a;
             List<Contact> returnUnfilteredList = new();
