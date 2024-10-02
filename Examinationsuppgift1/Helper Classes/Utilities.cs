@@ -10,7 +10,6 @@ namespace Examinationsuppgift1
 
         public static void SaveContact(Contact contact)
         {
-            //Lägga in try/catch?
             if (File.Exists(filePath))
             {
                 string contactAsString = JsonSerializer.Serialize(contact);
@@ -77,11 +76,8 @@ namespace Examinationsuppgift1
 
         public static void DeleteContact(string input)
         {
-            //Läser in alla rader som strings i en lista av strings.
             List<string> jsonStringLines = File.ReadAllLines(filePath).ToList();
-            //Tar bort den string som matchar den jag vill ta bort.
             jsonStringLines.RemoveAll(line => line.Equals(input));
-            //Skriver tillbaka alla kvarvarande strängar till filen.
             File.WriteAllLines(filePath, jsonStringLines);
 
         }
